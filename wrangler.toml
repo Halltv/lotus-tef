@@ -1,0 +1,37 @@
+name = "lotus-tef"
+type = "javascript"
+account_id = ""
+workers_dev = true
+route = ""
+zone_id = ""
+
+[env.production]
+name = "lotus-tef-prod"
+route = "www.lotustef.com/*"
+zone_id = ""
+
+[build]
+command = "npm run build"
+cwd = "./"
+watch_paths = ["src/**/*.ts", "src/**/*.tsx"]
+
+[build.upload]
+format = "service-worker"
+
+[env.production.build.upload]
+format = "modules"
+
+[[env.production.build.upload.rules]]
+type = "CompiledContentType"
+globs = ["**/*.wasm"]
+fallthrough = true
+
+[[env.production.build.upload.rules]]
+type = "Text"
+globs = ["**/*.txt", "**/*.html"]
+fallthrough = true
+
+[[env.production.build.upload.rules]]
+type = "Data"
+globs = ["**/*.bin"]
+fallthrough = true
