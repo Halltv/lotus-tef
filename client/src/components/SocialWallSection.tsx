@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import PostDetailModal from './PostDetailModal';
-import { trpc } from '@/lib/trpc';
+import { staticNews } from '@/lib/staticData';
 
 /**
  * Social Wall Section - Lotus TEF
@@ -13,11 +13,8 @@ export default function SocialWallSection() {
   const [selectedPost, setSelectedPost] = useState<any | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Carregar notícias do banco de dados
-  const { data: news = [], isLoading } = trpc.news.list.useQuery();
-  
-  // Pegar apenas os 4 primeiros posts
-  const posts = news.slice(0, 4);
+  // Usar dados estáticos em vez de buscar da API/Banco
+  const posts = staticNews;
 
   const handlePostClick = (post: any) => {
     setSelectedPost(post);
@@ -43,18 +40,6 @@ export default function SocialWallSection() {
       transition: { duration: 0.6 },
     },
   };
-
-  if (isLoading) {
-    return (
-      <section id="news" className="relative py-24 overflow-hidden">
-        <div className="container relative z-10">
-          <div className="text-center">
-            <p className="text-foreground/70">Carregando notícias...</p>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <>

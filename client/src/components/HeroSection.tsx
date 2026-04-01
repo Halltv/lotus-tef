@@ -2,11 +2,11 @@ import { ArrowRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { trpc } from '@/lib/trpc';
+import { staticNews } from '@/lib/staticData';
 
 /**
  * Hero Section - Lotus TEF
- * Seção principal com imagens rotativas carregadas do banco de dados
+ * Seção principal com imagens rotativas carregadas de dados estáticos
  * Design: Assimétrico com rotação de imagens a cada 30 segundos
  */
 
@@ -45,24 +45,13 @@ const itemVariants = {
 export default function HeroSection() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentSubtitleIndex, setCurrentSubtitleIndex] = useState(0);
-  const [heroImages, setHeroImages] = useState<HeroImage[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Carregar notícias do banco de dados
-  const { data: news } = trpc.news.list.useQuery();
-
-  useEffect(() => {
-    if (news && news.length > 0) {
-      // Pegar as primeiras 5 notícias para o hero
-      const heroNews = news.slice(0, 5).map((item: any) => ({
-        id: item.id,
-        url: item.imageUrl,
-        caption: item.caption || item.title,
-      }));
-      setHeroImages(heroNews);
-      setIsLoading(false);
-    }
-  }, [news]);
+  
+  // Usar dados estáticos das notícias para o Hero
+  const heroImages: HeroImage[] = staticNews.map(item => ({
+    id: item.id,
+    url: item.imageUrl,
+    caption: item.caption || item.title,
+  }));
 
   useEffect(() => {
     if (heroImages.length === 0) return;
@@ -112,14 +101,6 @@ export default function HeroSection() {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
-
-  if (isLoading) {
-    return (
-      <section className="relative min-h-screen pt-32 pb-20 overflow-hidden flex items-center justify-center">
-        <div className="animate-pulse text-foreground/50">Carregando notícias...</div>
-      </section>
-    );
-  }
 
   if (heroImages.length === 0) {
     return (
@@ -259,7 +240,7 @@ export default function HeroSection() {
                   className="w-full h-auto object-cover"
                   onError={(e) => {
                     const img = e.target as HTMLImageElement;
-                    img.src = '/images/placeholder.png';
+                    img.src = '/images/lotus-logo.png';
                   }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent group-hover:bg-black/20 transition-all" />

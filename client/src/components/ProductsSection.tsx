@@ -1,62 +1,12 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { staticProducts } from '@/lib/staticData';
 
 /**
  * Products Section - Lotus TEF
  * Exibe os 3 produtos em cards lado a lado
  * Design: Grid responsivo com hover effects
  */
-
-interface Product {
-  id: string;
-  name: string;
-  subtitle: string;
-  description: string;
-  icon: string;
-  features: string[];
-}
-
-const products: Product[] = [
-  {
-    id: 'troca',
-    name: 'TEF Troca de Arquivo',
-    subtitle: 'Tradição e confiabilidade',
-    description: 'Tradição e confiabilidade. A solução ideal para ambientes que exigem um sistema de TEF robusto e comprovado pelo mercado.',
-    icon: '📄',
-    features: [
-      'Processamento em lote',
-      'Integração com sistemas legados',
-      'Relatórios detalhados',
-      'Suporte técnico prioritário',
-    ],
-  },
-  {
-    id: 'sitef',
-    name: 'TEF SiTef (DLL)',
-    subtitle: 'Alta performance e integração',
-    description: 'Alta performance e integração direta. Utilize a biblioteca da Software Express para uma comunicação rápida e segura com o PDV.',
-    icon: '⚙️',
-    features: [
-      'Processamento em tempo real',
-      'Múltiplos adquirentes',
-      'Reconciliação automática',
-      'Suporte 24/7 dedicado',
-    ],
-  },
-  {
-    id: 'scope',
-    name: 'TEF Scope',
-    subtitle: 'Modernidade e escalabilidade',
-    description: 'Modernidade e escalabilidade. Perfeito para operações de alto volume, garantindo velocidade e gestão centralizada.',
-    icon: '⚡',
-    features: [
-      'Arquitetura customizável',
-      'Integração com qualquer sistema',
-      'Monitoramento em tempo real',
-      'SLA garantido 99.99%',
-    ],
-  },
-];
 
 export default function ProductsSection() {
   const handleContactClick = () => {
@@ -118,7 +68,7 @@ export default function ProductsSection() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          {products.map((product) => (
+          {staticProducts.map((product) => (
             <motion.div
               key={product.id}
               variants={itemVariants}
