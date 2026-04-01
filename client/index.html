@@ -6,6 +6,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <!-- Security Headers -->
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: blob:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:; frame-ancestors 'none';" />
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -13,27 +14,30 @@
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="theme-color" content="#1a1a1a" />
+    <!-- SEO Meta Tags -->
     <meta name="description" content="Lotus TEF - Solução segura e confiável de Transferência Eletrônica de Fundos para pagamentos eletrônicos. Tecnologia avançada para seu negócio crescer." />
     <meta name="keywords" content="TEF, Transferência Eletrônica de Fundos, pagamentos eletrônicos, solução de pagamento, maquininha, processamento de pagamentos, segurança financeira" />
     <meta name="author" content="Lotus TEF" />
     <meta name="robots" content="index, follow" />
     <meta name="language" content="Portuguese" />
+    <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.lotustef.com/" />
-    <meta property="og:title" content="Lotus TEF" />
+    <meta property="og:title" content="Lotus TEF - Soluções de Pagamento Eletrônico" />
     <meta property="og:description" content="Transferência Eletrônica de Fundos segura e confiável para seu negócio. Tecnologia avançada em pagamentos eletrônicos." />
     <meta property="og:image" content="https://www.lotustef.com/og-image.png" />
+    <!-- Twitter Card -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://www.lotustef.com/" />
-    <meta property="twitter:title" content="Lotus TEF" />
+    <meta property="twitter:title" content="Lotus TEF - Soluções de Pagamento" />
     <meta property="twitter:description" content="Solução segura de Transferência Eletrônica de Fundos para pagamentos eletrônicos." />
     <meta property="twitter:image" content="https://www.lotustef.com/og-image.png" />
+    <!-- Canonical URL -->
     <link rel="canonical" href="https://www.lotustef.com/" />
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    
-    <title>Lotus TEF</title>
-    
+    <title>Lotus TEF - Soluções de Pagamento Eletrônico</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -42,6 +46,10 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script
+      defer
+      src="%VITE_ANALYTICS_ENDPOINT%/umami"
+      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
   </body>
 
 </html>
